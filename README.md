@@ -1,2 +1,2 @@
 # PrismMessenger
-An encrypted text messaging application with RSA Encryption
+An encrypted text messaging application for Android with RSA Encryption
