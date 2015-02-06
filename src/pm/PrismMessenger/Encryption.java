@@ -1,4 +1,4 @@
-package pm.alex.PrismMessenger;
+package pm.PrismMessenger;
 
 import java.security.*;
 import java.util.ArrayList;
