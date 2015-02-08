@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.Telephony;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,14 +21,17 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		Log.d(TAG, "onStart");
 	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate");
 		setContentView(R.layout.crypto_tester);
 		
 		broadcast_receiver = new BCastReceiver(this);
+		registerReceiver(broadcast_receiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
 		
 		// Generate Keys
 		Button generate = (Button)findViewById(R.id.generate);
@@ -57,28 +61,33 @@ public class MainActivity extends Activity {
 				});
 			}
 		});
+		
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		Log.d(TAG, "onResume");
 		registerReceiver(broadcast_receiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
+		Log.d(TAG, "onPause");
 		unregisterReceiver(broadcast_receiver);
 	}
 	
 	@Override
 	protected void onStop() {
 		super.onStop();
+		Log.d(TAG, "onStop");
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
+		Log.d(TAG, "onRestart");
 	}
 	
 }
